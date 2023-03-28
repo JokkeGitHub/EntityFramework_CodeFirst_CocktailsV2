@@ -1,5 +1,6 @@
 using System;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Diagnostics;
 using System.Linq;
 
@@ -20,9 +21,11 @@ namespace EntityFramework_CodeFirst_CocktailsV2
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Configurations.Add(new CocktailConfigurations());
+            modelBuilder.Configurations.Add(new CocktailConfigurations());
 
-            //modelBuilder.Entity<Cocktail>().HasMany(i => i.Ingredients).WithMany(c => c.Cocktails);
+            modelBuilder.Entity<Cocktail>().HasMany(i => i.Ingredients).WithMany(c => c.Cocktails);
+
+            modelBuilder.Conventions.Add<ManyToManyCascadeDeleteConvention>();
         }
 
         public DbSet<Container> Containers { get; set; }
