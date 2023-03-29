@@ -28,11 +28,11 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                 context.SaveChanges();
             }
 
+            */
             Console.WriteLine("Ran without problems?");
             Console.ReadLine();
-            */
 
-
+            /*
             Cocktail cocktailToDelete = new Cocktail
             {
                 CocktailName = "Test",
@@ -43,6 +43,7 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                         new Ingredient{ IngredientName = "Lime", IngredientAmount = 1, IngredientComment = "Mushed", IngredientUnit = new Unit{ UnitType = "slice"} }
                     }
             };
+            */
 
             /* BY ID's !!
             Cocktail cocktailToDelete = new Cocktail
@@ -60,7 +61,7 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             using (var context = new CocktailContext())
             {
                  //context.Cocktails.Remove(cocktailToDelete); //The object cannot be deleted because it was not found in the ObjectStateManager.
-                context.Entry(cocktailToDelete).State = EntityState.Deleted; 
+                //context.Entry(cocktailToDelete).State = EntityState.Deleted; 
                 //When referring by object:
                 // A referential integrity constraint violation occurred: The property value(s) of 'Container.ContainerID' on one end of a relationship do not match the property value(s) of 'Cocktail.ContainerID' on the other end.'
                 //When referring by ID:
@@ -69,8 +70,8 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                 context.SaveChanges();
             }
 
-            Console.WriteLine("Deleted without problems?");
-            Console.ReadLine();
+            //Console.WriteLine("Deleted without problems?");
+            //Console.ReadLine();
         }
     }
 }
