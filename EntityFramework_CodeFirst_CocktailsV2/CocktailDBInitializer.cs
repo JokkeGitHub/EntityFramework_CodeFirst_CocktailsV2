@@ -9,6 +9,18 @@ namespace EntityFramework_CodeFirst_CocktailsV2
 {
     public class CocktailDBInitializer : DropCreateDatabaseAlways<CocktailContext>
     {
+        private readonly DbModelBuilder _modelBuilder;
+
+        public CocktailDBInitializer(DbModelBuilder modelBuilder)
+        {
+            this._modelBuilder = modelBuilder;
+        }
+
+        public void Seed()
+        {
+
+        }
+
         protected override void Seed(CocktailContext context)
         {
             IList<Unit> units = new List<Unit>
@@ -52,9 +64,24 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                 }
             };
 
-            context.Units.AddRange(units);
-            context.Containers.AddRange(containers);
-            context.Cocktails.AddRange(cocktails);
+
+            foreach (var unit in units)
+            {
+                context.Units.Add(unit);
+            }
+            foreach (var container in containers)
+            {
+                context.Containers.Add(container);
+            }
+            foreach (var cocktail in cocktails)
+            {
+                context.Cocktails.Add(cocktail);
+            }
+
+            //context.Units.AddRange(units);
+            //context.Containers.AddRange(containers);
+            //context.Cocktails.AddRange(cocktails);
+            context.SaveChanges();
 
             base.Seed(context);
         }

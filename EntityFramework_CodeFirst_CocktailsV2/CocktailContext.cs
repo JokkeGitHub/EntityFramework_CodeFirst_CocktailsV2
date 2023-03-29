@@ -16,11 +16,15 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         // connection string in the application configuration file.
         public CocktailContext() : base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MyCocktailsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
-            Database.SetInitializer(new CocktailDBInitializer());
+            //Database.SetInitializer<CocktailContext>(new CocktailDBInitializer());
+            OnModelCreating(new DbModelBuilder());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            new CocktailDBInitializer(modelBuilder).Seed();
+
             modelBuilder.Configurations.Add(new CocktailConfigurations());
 
             modelBuilder.Entity<Cocktail>().HasMany(i => i.Ingredients).WithMany(c => c.Cocktails);
