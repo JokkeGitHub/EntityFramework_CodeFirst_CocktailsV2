@@ -11,6 +11,6 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         public int UnitID { get; set; }
         public string UnitType { get; set; }
 
-        public virtual ICollection<Ingredient> Ingredients { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
     }
 }

@@ -16,21 +16,29 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         // connection string in the application configuration file.
         public CocktailContext() : base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MyCocktailsDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
-            //Database.SetInitializer<CocktailContext>(new CocktailDBInitializer());
+            //Database.SetInitializer(new CocktailDBInitializer());
+        }
+
+        public void SeedData()
+        {
+            CocktailDBInitializer cocktailDBInitializer = new CocktailDBInitializer();
+
+            cocktailDBInitializer.SeedData(this);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CocktailConfigurations());
 
-            modelBuilder.Entity<Cocktail>().HasMany(i => i.Ingredients).WithMany(c => c.Cocktails);
+            //modelBuilder.Entity<Cocktail>().HasMany(i => i.Ingredients).WithMany(c => c.Cocktails);
 
             modelBuilder.Conventions.Add<ManyToManyCascadeDeleteConvention>();
         }
 
         public DbSet<Container> Containers { get; set; }
-        public DbSet<Unit> Units { get; set; }
         public DbSet<Cocktail> Cocktails { get; set; }
+        public DbSet<Unit> Units { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 

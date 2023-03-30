@@ -29,6 +29,9 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             }
 
             */
+            CocktailContext cocktailContext = new CocktailContext();
+            cocktailContext.SeedData();
+
             Console.WriteLine("Ran without problems?");
             Console.ReadLine();
 
