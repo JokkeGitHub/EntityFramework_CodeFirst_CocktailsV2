@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace EntityFramework_CodeFirst_CocktailsV2
 {
+
     internal class DataAccess
     {
+        // Let's try this instead
+        public List<Unit> Units { get; set; }
+        public List<Item> Items { get; set; }
+        public List<Container> Container { get; set; }
+        public List<Cocktail> Cocktails { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
+
         public DataAccess() { }
 
         public List<List<object>> GetData(List<List<object>> lists)
