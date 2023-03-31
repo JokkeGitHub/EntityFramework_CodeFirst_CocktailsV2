@@ -17,6 +17,7 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                 foreach (var unit in context.Units)
                 {
                     lists[0].Add(unit); // This doesn't work. Maybe add some temp lists of correct type here
+                    // Maybe I should just add a class which consists of the correct list types? This might be a better solution
                 }
 
                 foreach (var item in context.Items)
