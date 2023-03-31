@@ -8,7 +8,7 @@ using System.Runtime.Remoting.Contexts;
 
 namespace EntityFramework_CodeFirst_CocktailsV2
 {
-    public class CocktailDBInitializer : DropCreateDatabaseAlways<CocktailContext>
+    internal class CocktailDBInitializer : DropCreateDatabaseAlways<CocktailContext>
     {
         public void SeedData(CocktailContext context)
         {

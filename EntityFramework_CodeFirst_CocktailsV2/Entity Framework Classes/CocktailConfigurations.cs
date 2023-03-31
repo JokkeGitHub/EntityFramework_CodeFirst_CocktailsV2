@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework_CodeFirst_CocktailsV2
 {
-    public class CocktailConfigurations : EntityTypeConfiguration<Cocktail>
+    internal class CocktailConfigurations : EntityTypeConfiguration<Cocktail>
     {
         public CocktailConfigurations()
         {

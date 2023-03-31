@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityFramework_CodeFirst_CocktailsV2
 {
-    public class Item
+    internal class Item
     {
         public int ItemID { get; set; }
         public string ItemName { get; set; }

@@ -55,11 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Objects\Item.cs" />
     <Compile Include="Objects\Cocktail.cs" />
-    <Compile Include="CocktailConfigurations.cs" />
-    <Compile Include="CocktailContext.cs" />
-    <Compile Include="CocktailDBInitializer.cs" />
+    <Compile Include="Entity Framework Classes\CocktailConfigurations.cs" />
+    <Compile Include="Entity Framework Classes\CocktailContext.cs" />
+    <Compile Include="Entity Framework Classes\CocktailDBInitializer.cs" />
     <Compile Include="Objects\Container.cs" />
     <Compile Include="Objects\Ingredient.cs" />
     <Compile Include="Program.cs" />

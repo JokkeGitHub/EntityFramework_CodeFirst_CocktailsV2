@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace EntityFramework_CodeFirst_CocktailsV2
 {
-    public class CocktailContext : DbContext
+    internal class CocktailContext : DbContext
     {
         // Your context has been configured to use a 'CocktailContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 

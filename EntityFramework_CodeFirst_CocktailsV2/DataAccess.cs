@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EntityFramework_CodeFirst_CocktailsV2
+{
+    internal class DataAccess
+    {
+        public DataAccess() { }
+
+        public List<List<object>> GetData(List<List<object>> lists)
+        {
+            using (var context = new CocktailContext())
+            {
+                foreach (var unit in context.Units)
+                {
+                    lists[0].Add(unit); // This doesn't work. Maybe add some temp lists of correct type here
+                }
+
+                foreach (var item in context.Items)
+                {
+                    lists[1].Add(item);
+                }
+
+                foreach (var container in context.Containers)
+                {
+                    lists[2].Add(container);
+                }
+
+                foreach (var cocktail in context.Cocktails)
+                {
+                    lists[3].Add(cocktail);
+                }
+
+                foreach (var ingredient in context.Ingredients)
+                {
+                    lists[4].Add(ingredient);
+                }
+            }
+
+            return lists;
+        }
+    }
+}

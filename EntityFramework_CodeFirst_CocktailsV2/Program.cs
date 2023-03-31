@@ -7,10 +7,38 @@ using System.Data.Entity;
 
 namespace EntityFramework_CodeFirst_CocktailsV2
 {
-    public class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        static CocktailContext cocktailContext = new CocktailContext();
+        static DataAccess dataAccess = new DataAccess();
+        static void Initialization()
         {
+            cocktailContext.SeedData();
+        }
+
+        static void Main(string[] args)
+        {            
+            Initialization();
+
+            List<Unit> units = new List<Unit>();
+            List<Item> items = new List<Item>();
+            List<Container> containers = new List<Container>();
+            List<Cocktail> cocktails = new List<Cocktail>();
+            List<Ingredient> ingredients = new List<Ingredient>();
+
+            List<List<object>> lists = new List<List<object>>();
+
+            lists = dataAccess.GetData(lists);
+
+            foreach (var unit in lists[0])
+            {
+                units.Add((Unit)unit);
+            }
+
+            foreach (var unit in units) 
+            { 
+                Console.WriteLine(unit.UnitType);
+            }
             /*
             using(var context = new CocktailContext()) 
             {
@@ -29,8 +57,11 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             }
 
             */
-            CocktailContext cocktailContext = new CocktailContext();
-            cocktailContext.SeedData();
+
+
+
+
+            //units.Add(new Unit());
 
             Console.WriteLine("Ran without problems?");
             Console.ReadLine();
@@ -59,11 +90,10 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                         new Ingredient{ IngredientName = "Lime", IngredientAmount = 1, IngredientComment = "Mushed", UnitID = 2 }
                     }
             };
-            */
 
             using (var context = new CocktailContext())
             {
-                 //context.Cocktails.Remove(cocktailToDelete); //The object cannot be deleted because it was not found in the ObjectStateManager.
+                //context.Cocktails.Remove(cocktailToDelete); //The object cannot be deleted because it was not found in the ObjectStateManager.
                 //context.Entry(cocktailToDelete).State = EntityState.Deleted; 
                 //When referring by object:
                 // A referential integrity constraint violation occurred: The property value(s) of 'Container.ContainerID' on one end of a relationship do not match the property value(s) of 'Cocktail.ContainerID' on the other end.'
@@ -72,6 +102,8 @@ namespace EntityFramework_CodeFirst_CocktailsV2
 
                 context.SaveChanges();
             }
+
+            */
 
             //Console.WriteLine("Deleted without problems?");
             //Console.ReadLine();
