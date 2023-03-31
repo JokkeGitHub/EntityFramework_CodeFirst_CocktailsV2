@@ -20,29 +20,32 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         {            
             Initialization();
 
-            List<Unit> units = new List<Unit>();
-            List<Item> items = new List<Item>();
-            List<Container> containers = new List<Container>();
-            List<Cocktail> cocktails = new List<Cocktail>();
-            List<Ingredient> ingredients = new List<Ingredient>();
-
-            //List<List<object>> lists = new List<List<object>>();
-
             dataAccess = dataAccess.GetData(dataAccess);
 
             foreach (var unit in dataAccess.Units)
             {
                 Console.WriteLine(unit.UnitType);
             }
-
-            using (var context = cocktailContext)
+            foreach (var item in dataAccess.Items)
             {
-                foreach (var item in context.Units)
-                {
-                    Console.WriteLine(item.UnitType);
-                }
+                Console.WriteLine(item.ItemName);
             }
-            
+            foreach (var container in dataAccess.Containers)
+            {
+                Console.WriteLine(container.ContainerType);
+            }
+            foreach (var cocktail in dataAccess.Cocktails)
+            {
+                Console.WriteLine(cocktail.CocktailName);
+            }
+            foreach (var ingredient in dataAccess.Ingredients)
+            {
+                Console.WriteLine(ingredient.IngredientCocktail.CocktailName);
+                Console.WriteLine(ingredient.IngredientItem.ItemName);
+                Console.WriteLine(ingredient.IngredientAmount);
+            }
+
+
             /*
             using(var context = new CocktailContext()) 
             {

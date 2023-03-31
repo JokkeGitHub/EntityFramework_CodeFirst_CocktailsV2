@@ -12,7 +12,7 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         // Let's try this instead
         public List<Unit> Units { get; set; }
         public List<Item> Items { get; set; }
-        public List<Container> Container { get; set; }
+        public List<Container> Containers { get; set; }
         public List<Cocktail> Cocktails { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
@@ -24,32 +24,11 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         {
             using (var context = new CocktailContext())
             {
-
                 dataAccess.Units = context.Units.ToList<Unit>();
-                /*
-                foreach (var unit in context.Units)
-                {
-                    dataAccess.Units.Add(unit); // This doesn't work either. 
-                }
-                foreach (var item in context.Items)
-                {
-                    this.Items.Add(item);
-                }
-
-                foreach (var container in context.Containers)
-                {
-                    this.Container.Add(container);
-                }
-
-                foreach (var cocktail in context.Cocktails)
-                {
-                    this.Cocktails.Add(cocktail);
-                }
-
-                foreach (var ingredient in context.Ingredients)
-                {
-                    this.Ingredients.Add(ingredient);
-                }*/
+                dataAccess.Items = context.Items.ToList<Item>();
+                dataAccess.Containers = context.Containers.ToList<Container>();
+                dataAccess.Cocktails = context.Cocktails.ToList<Cocktail>();
+                dataAccess.Ingredients = context.Ingredients.ToList<Ingredient>();
             }
 
             return dataAccess;
