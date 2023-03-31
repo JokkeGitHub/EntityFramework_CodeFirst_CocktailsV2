@@ -35,6 +35,13 @@ namespace EntityFramework_CodeFirst_CocktailsV2
                 Console.WriteLine(unit.UnitType);
             }
 
+            using (var context = cocktailContext)
+            {
+                foreach (var item in context.Units)
+                {
+                    Console.WriteLine(item.UnitType);
+                }
+            }
             
             /*
             using(var context = new CocktailContext()) 

@@ -24,11 +24,13 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         {
             using (var context = new CocktailContext())
             {
+
+                dataAccess.Units = context.Units.ToList<Unit>();
+                /*
                 foreach (var unit in context.Units)
                 {
                     dataAccess.Units.Add(unit); // This doesn't work either. 
                 }
-                /*
                 foreach (var item in context.Items)
                 {
                     this.Items.Add(item);
