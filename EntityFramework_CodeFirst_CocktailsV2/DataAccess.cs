@@ -16,40 +16,41 @@ namespace EntityFramework_CodeFirst_CocktailsV2
         public List<Cocktail> Cocktails { get; set; }
         public List<Ingredient> Ingredients { get; set; }
 
-        public DataAccess() { }
+        public DataAccess()
+        {    
+        }
 
-        public List<List<object>> GetData(List<List<object>> lists)
+        public DataAccess GetData(DataAccess dataAccess)
         {
             using (var context = new CocktailContext())
             {
                 foreach (var unit in context.Units)
                 {
-                    lists[0].Add(unit); // This doesn't work. Maybe add some temp lists of correct type here
-                    // Maybe I should just add a class which consists of the correct list types? This might be a better solution
+                    dataAccess.Units.Add(unit); // This doesn't work either. 
                 }
-
+                /*
                 foreach (var item in context.Items)
                 {
-                    lists[1].Add(item);
+                    this.Items.Add(item);
                 }
 
                 foreach (var container in context.Containers)
                 {
-                    lists[2].Add(container);
+                    this.Container.Add(container);
                 }
 
                 foreach (var cocktail in context.Cocktails)
                 {
-                    lists[3].Add(cocktail);
+                    this.Cocktails.Add(cocktail);
                 }
 
                 foreach (var ingredient in context.Ingredients)
                 {
-                    lists[4].Add(ingredient);
-                }
+                    this.Ingredients.Add(ingredient);
+                }*/
             }
 
-            return lists;
+            return dataAccess;
         }
     }
 }

@@ -26,19 +26,16 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             List<Cocktail> cocktails = new List<Cocktail>();
             List<Ingredient> ingredients = new List<Ingredient>();
 
-            List<List<object>> lists = new List<List<object>>();
+            //List<List<object>> lists = new List<List<object>>();
 
-            lists = dataAccess.GetData(lists);
+            dataAccess = dataAccess.GetData(dataAccess);
 
-            foreach (var unit in lists[0])
+            foreach (var unit in dataAccess.Units)
             {
-                units.Add((Unit)unit);
-            }
-
-            foreach (var unit in units) 
-            { 
                 Console.WriteLine(unit.UnitType);
             }
+
+            
             /*
             using(var context = new CocktailContext()) 
             {
