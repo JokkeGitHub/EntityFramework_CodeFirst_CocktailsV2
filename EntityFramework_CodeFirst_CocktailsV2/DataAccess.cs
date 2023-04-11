@@ -9,7 +9,6 @@ namespace EntityFramework_CodeFirst_CocktailsV2
 
     internal class DataAccess
     {
-        // Let's try this instead
         public List<Unit> Units { get; set; }
         public List<Item> Items { get; set; }
         public List<Container> Containers { get; set; }
@@ -32,6 +31,26 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             }
 
             return dataAccess;
+        }
+
+        public void DeleteCocktail(string cocktailToDeleteName)
+        {
+
+            using (var context = new CocktailContext())
+            {
+                var queryIngredients = from ingredient in context.Ingredients
+                            where ingredient.IngredientCocktail.CocktailName.Equals(cocktailToDeleteName)
+                            select ingredient;
+
+                var queryCocktail = from cocktail in context.Cocktails
+                             where cocktail.CocktailName.Equals(cocktailToDeleteName)
+                             select cocktail;
+
+                context.Ingredients.RemoveRange(queryIngredients);
+                context.Cocktails.RemoveRange(queryCocktail);
+
+                context.SaveChanges();
+            }
         }
     }
 }
