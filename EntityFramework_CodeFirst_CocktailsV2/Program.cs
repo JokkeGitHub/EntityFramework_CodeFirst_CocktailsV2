@@ -22,37 +22,15 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             Initialization();
 
             dataAccess = dataAccess.GetData(dataAccess);
-
-            /*
-            foreach (var unit in dataAccess.Units)
-            {
-                Console.WriteLine(unit.UnitType);
-            }
-            foreach (var item in dataAccess.Items)
-            {
-                Console.WriteLine(item.ItemName);
-            }
-            foreach (var container in dataAccess.Containers)
-            {
-                Console.WriteLine(container.ContainerType);
-            }
-            foreach (var cocktail in dataAccess.Cocktails)
-            {
-                Console.WriteLine(cocktail.CocktailName);
-            }
-            foreach (var ingredient in dataAccess.Ingredients)
-            {
-                Console.WriteLine(ingredient.IngredientCocktail.CocktailName);
-                Console.WriteLine(ingredient.IngredientItem.ItemName);
-                Console.WriteLine(ingredient.IngredientAmount);
-            }
-            */
-
-
             GetCocktails(dataAccess);
             Console.WriteLine("----------------------------------------------");
+
             DeleteCocktail(dataAccess);
+            dataAccess = dataAccess.GetData(dataAccess);
             GetCocktails(dataAccess);
+
+            Console.WriteLine("Ran without problems?");
+            Console.ReadLine();
 
             void GetCocktails(DataAccess dataAccess)
             { 
@@ -69,9 +47,6 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             {
                 dataAccess.DeleteCocktail("Martini");
             }
-
-            Console.WriteLine("Ran without problems?");
-            Console.ReadLine();
         }
     }
 }

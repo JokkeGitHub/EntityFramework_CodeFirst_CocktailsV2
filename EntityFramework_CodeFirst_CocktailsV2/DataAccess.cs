@@ -35,7 +35,6 @@ namespace EntityFramework_CodeFirst_CocktailsV2
 
         public void DeleteCocktail(string cocktailToDeleteName)
         {
-
             using (var context = new CocktailContext())
             {
                 var queryIngredients = from ingredient in context.Ingredients

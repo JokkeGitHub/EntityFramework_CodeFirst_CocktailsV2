@@ -231,20 +231,5 @@ namespace EntityFramework_CodeFirst_CocktailsV2
 
             context.SaveChanges();
         }
-        protected override void Seed(CocktailContext context)
-        {
-            /*
-
-            */
-
-
-            /*
-            */
-            //
-            //
-            //
-            //
-            //base.Seed(context);
-        }
     }
 }
