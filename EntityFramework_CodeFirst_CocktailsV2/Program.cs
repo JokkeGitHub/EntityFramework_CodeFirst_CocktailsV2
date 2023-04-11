@@ -28,6 +28,9 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             DeleteCocktail(dataAccess);
             dataAccess = dataAccess.GetData(dataAccess);
             GetCocktails(dataAccess);
+            Console.WriteLine("----------------------------------------------");
+
+            CocktailsContainingVodka(dataAccess);
 
             Console.WriteLine("Ran without problems?");
             Console.ReadLine();
@@ -46,6 +49,18 @@ namespace EntityFramework_CodeFirst_CocktailsV2
             void DeleteCocktail(DataAccess dataAccess)
             {
                 dataAccess.DeleteCocktail("Martini");
+            }
+
+            void CocktailsContainingVodka(DataAccess dataAccess)
+            {
+                var query = from ingredient in dataAccess.Ingredients
+                            where ingredient.IngredientItem.ItemName.Equals("vodka")
+                            select ingredient.IngredientCocktail.CocktailName;
+
+                foreach (var item in query)
+                {
+                    Console.WriteLine(item);
+                }
             }
         }
     }
